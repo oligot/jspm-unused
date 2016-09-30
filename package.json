@@ -1,0 +1,19 @@
+{
+  "name": "jspm-unused-files",
+  "version": "0.0.0",
+  "description": "Find unused files in a Jspm project",
+  "bin": {
+    "jspm-unused-files": "index.js"
+  },
+  "scripts": {
+    "test": "exit 0"
+  },
+  "author": "Olivier Ligot <oligot@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "2.9.0",
+    "debug": "2.2.0",
+    "globby": "6.0.0",
+    "req-cwd": "1.0.1"
+  }
+}
