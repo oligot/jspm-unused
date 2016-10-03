@@ -26,3 +26,7 @@ You can set the DEBUG environment variable to get more informations
 ```shell
 DEBUG=* jspm-unused app/app.js
 ```
+
+## Related
+
+- [webpack-unused](https://github.com/latentflip/webpack-unused) - Find unused files in a Webpack project
