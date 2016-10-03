@@ -1,9 +1,9 @@
 {
-  "name": "jspm-unused-files",
+  "name": "jspm-unused",
   "version": "0.0.0",
   "description": "Find unused files in a Jspm project",
   "bin": {
-    "jspm-unused-files": "index.js"
+    "jspm-unused": "index.js"
   },
   "scripts": {
     "test": "exit 0"
