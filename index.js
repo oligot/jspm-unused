@@ -8,11 +8,11 @@ const pkg = require('./package');
 const reqCwd = require('req-cwd');
 const jspm = reqCwd('jspm');
 const globby = require('globby');
-const debug = require('debug')(pkg.name);
 
 program
   .version(pkg.version)
   .description(pkg.description)
+  .option('-q, --quiet', 'Suppress superfluous output')
   .usage('<entrypoint>')
   .parse(process.argv);
 
@@ -41,16 +41,22 @@ function jspmTree() {
   });
 }
 
-debug(`Building the tree for ${expression}`);
+function log(msg) {
+  if (!program.quiet) {
+    console.log(msg);
+  }
+}
+
+log(`Building the tree for ${expression}`);
 Promise.all([paths(), jspmTree()]).then(res => {
   const paths = res[0];
   const tree = new Set(res[1]);
   const unused = new Set(paths.filter(file => !tree.has(file)));
-  debug(unused.size > 0 ? 'Unused files: ' : 'No unused files');
+  log(unused.size > 0 ? 'Unused files: ' : 'No unused files');
   for (let file of unused) {
     console.log(file);
   }
 }).catch(err => {
-	console.log(err.stack);
-	process.exit(1);
+  console.log(err.stack);
+  process.exit(1);
 });
