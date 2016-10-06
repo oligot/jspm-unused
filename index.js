@@ -49,7 +49,7 @@ function log(msg) {
 
 log(`Building the tree for ${expression}`);
 Promise.all([paths(), jspmTree()]).then(res => {
-  const paths = res[0];
+  const paths = res[0].map(p => path.normalize(p));
   const tree = new Set(res[1]);
   const unused = new Set(paths.filter(file => !tree.has(file)));
   log(unused.size > 0 ? 'Unused files: ' : 'No unused files');
